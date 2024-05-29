@@ -7,6 +7,7 @@ import { DDLSidebar } from '@ddreamland/common'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [lang, setLang] = useState<'en' | 'zh-CN'>('en')
 
   return (
     <>
@@ -19,10 +20,18 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <button
+        onClick={() => {
+          setLang(lang == 'en' ? 'zh-CN' : 'en')
+        }}
+      >
+        Switch lang
+      </button>
       <div style={{ height: '600px', width: '280px' }}>
-        {/* ddreamland sidebar adptive parent size */}
+        {/* ddreamland sidebar adptive parent size and position */}
         <DDLSidebar></DDLSidebar>
 
+        {/* <DDLSidebar lang={lang}></DDLSidebar> */}
         {/* <DDLSidebar lang="en" /> */}
         {/* <DDLSidebar lang="zh-CN" /> */}
       </div>

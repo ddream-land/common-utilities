@@ -1,13 +1,9 @@
 'use client'
 import { DDLSidebar } from '@ddreamland/common'
-import { lazy, useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export function Container() {
   const [lang, setLang] = useState<'en' | 'zh-CN'>('en')
-
-  useEffect(function () {
-    setLang('en')
-  }, [])
 
   return (
     <div style={{ height: '600px', width: '280px' }}>
@@ -18,11 +14,12 @@ export function Container() {
       >
         Switch lang
       </button>
-      {/* ddreamland sidebar adptive parent size */}
-      {/* <DDLSidebar></DDLSidebar> */}
+      {/* ddreamland sidebar adptive parent size and position */}
+      <DDLSidebar></DDLSidebar>
 
+      {/* <DDLSidebar lang={lang} /> */}
       {/* <DDLSidebar lang="en" /> */}
-      <DDLSidebar lang={lang} />
+      {/* <DDLSidebar lang="zh-CN" /> */}
     </div>
   )
 }

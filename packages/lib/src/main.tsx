@@ -6,16 +6,12 @@ import { DDLSidebar } from './components/sidebar/DDLSidebar'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <div style={{ height: '600px', width: '280px' }}>
+    <div style={{ height: '100%', width: '100%' }}>
       {/* ddreamland sidebar adptive parent size */}
       <DDLSidebar></DDLSidebar>
 
       {/* <DDLSidebar lang="en" />
       <DDLSidebar lang="zh-CN" /> */}
-    </div>
-
-    <div style={{ height: '600px', width: '280px' }}>
-      {/* ddreamland sidebar adptive parent size */}
     </div>
   </React.StrictMode>
 )
