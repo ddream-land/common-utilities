@@ -8,13 +8,17 @@ or
 
 ```
 import React from "react";
-import { DDLSidebar } from "@ddreamland/common";
+import '@ddreamland/common/style.css'
+import { DDLSidebar } from '@ddreamland/common'
 
 export default function App() {
   return (
     <div style={{ height: '600px', width: '280px' }}>
       {/* ddreamland sidebar adptive parent size */}
-      <DDLSidebar> </DDLSidebar>
+      <DDLSidebar></DDLSidebar>
+
+      {/* <DDLSidebar lang="en" />
+      <DDLSidebar lang="zh-CN" /> */}
     </div>
   );
 }

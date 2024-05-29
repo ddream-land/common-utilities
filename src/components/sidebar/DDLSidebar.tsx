@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 export type DDLSidebarProps = Readonly<{
   lang?: 'en' | 'zh-CN'
+  children?: React.ReactNode
 }>
 
 export function DDLSidebar({ lang }: DDLSidebarProps) {
@@ -21,7 +22,8 @@ export function DDLSidebar({ lang }: DDLSidebarProps) {
         <div className={`${classes.minify} w-full h-full hidden`}></div>
         <div className={`${classes.content} w-full h-full`}>
           <div className={`${classes.header}`}>
-            Logo Icon
+            <p>Welcom to ddream land</p>
+            <p> Logo Icon</p>
             {t('Current Language')}
           </div>
           <div className={`${classes.panel}`}></div>
