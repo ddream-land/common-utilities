@@ -16,6 +16,7 @@ export default defineConfig(function ({ mode, command }) {
     build: {
       lib: {
         name: '@ddreamland/common',
+        fileName: 'ddreamland-common',
         entry: resolve(__dirname, 'src/index.ts'),
       },
       rollupOptions: {

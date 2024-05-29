@@ -1,5 +1,6 @@
 .sidebar {
   .wrapper {
+    color: rgba(255, 255, 255, 1);
     background-color: rgba(0, 0, 0, 1);
     border-radius: 20px;
 
@@ -17,8 +18,14 @@
     //   display: none;
     //   background-color: antiquewhite;
     // }
-    // .content {
-    //   background-color: aquamarine;
-    // }
+    .content {
+      .header {
+        height: 100px;
+      }
+      .panel {
+      }
+      .recent {
+      }
+    }
   }
 }

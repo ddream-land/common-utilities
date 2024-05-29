@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './tailwind.css'
+import './i18n'
+import './index.scss'
 import { DDLSidebar } from './components/sidebar/DDLSidebar'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
