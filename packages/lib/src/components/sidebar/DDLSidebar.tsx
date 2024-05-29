@@ -1,7 +1,6 @@
-import { useEffect } from 'react'
-import { useLanguageManager } from '../../useLanguageManager'
 import classes from './DDLSidebar.module.scss'
 import { useTranslation } from 'react-i18next'
+import { useLanguageManager } from '../../useLanguageManager'
 
 export type DDLSidebarProps = Readonly<{
   lang?: 'en' | 'zh-CN'
@@ -9,12 +8,8 @@ export type DDLSidebarProps = Readonly<{
 }>
 
 export function DDLSidebar({ lang }: DDLSidebarProps) {
-  const { ensureLanguage } = useLanguageManager()
+  const {} = useLanguageManager(lang)
   const { t } = useTranslation()
-
-  useEffect(function () {
-    ensureLanguage(lang)
-  }, [])
 
   return (
     <div className={`${classes.sidebar} w-full h-full bg-transparent`}>
