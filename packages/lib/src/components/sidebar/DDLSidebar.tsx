@@ -1,15 +1,25 @@
+'use client'
 import classes from './DDLSidebar.module.scss'
 import { useTranslation } from 'react-i18next'
 import { useLanguageManager } from '../../useLanguageManager'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 export type DDLSidebarProps = Readonly<{
   lang?: 'en' | 'zh-CN'
   children?: React.ReactNode
 }>
 
-export function DDLSidebar({ lang }: DDLSidebarProps) {
+export function DDLSidebar({ children, lang }: DDLSidebarProps) {
   const {} = useLanguageManager(lang)
   const { t } = useTranslation()
+
+  useEffect(function () {
+    ;(async function () {
+      const ret = await axios.get('https://catfact.ninja/fact')
+      console.log(ret)
+    })()
+  }, [])
 
   return (
     <div className={`${classes.sidebar} w-full h-full bg-transparent`}>

@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
 import tailwindcss from 'tailwindcss'
+// import preserveDirectives from 'rollup-plugin-preserve-directives'
 
 // https://vitejs.dev/config/
 export default defineConfig(function ({ mode, command }) {
@@ -28,6 +29,7 @@ export default defineConfig(function ({ mode, command }) {
             'react-dom': 'ReactDOM',
             tailwindcss: 'tailwindcss',
           },
+          banner: `'use client';`,
         },
       },
       sourcemap: false,

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import '@ddreamland/common/style.css'
-import { DDLSidebar } from '@ddreamland/common'
+import { ClientCom } from './clientCom'
 
 export default function Home() {
   return (
@@ -41,13 +41,7 @@ export default function Home() {
         />
       </div>
 
-      <div style={{ height: '600px', width: '280px' }}>
-        {/* ddreamland sidebar adptive parent size */}
-        <DDLSidebar></DDLSidebar>
-
-        {/* <DDLSidebar lang="en" />
-      <DDLSidebar lang="zh-CN" /> */}
-      </div>
+      <ClientCom></ClientCom>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
         <a
