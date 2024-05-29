@@ -1,6 +1,5 @@
 import Image from 'next/image'
-import '@ddreamland/common/style.css'
-import { ClientCom } from './clientCom'
+import { Container } from './Container'
 
 export default function Home() {
   return (
@@ -41,7 +40,7 @@ export default function Home() {
         />
       </div>
 
-      <ClientCom></ClientCom>
+      <Container></Container>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
         <a

@@ -2,7 +2,7 @@
 import classes from './DDLSidebar.module.scss'
 import { useTranslation } from 'react-i18next'
 import { useLanguageManager } from '../../useLanguageManager'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export type DDLSidebarProps = Readonly<{
@@ -14,7 +14,18 @@ export function DDLSidebar({ children, lang }: DDLSidebarProps) {
   const {} = useLanguageManager(lang)
   const { t } = useTranslation()
 
+  let now = Date.now()
+
+  // const [currentLanguageText, setCurrentLanguageText] = useState('')
+
   useEffect(function () {
+    setInterval(() => {
+      console.log(1111)
+      now++
+    }, 1000)
+
+    // suppressHydrationWarning
+    // setCurrentLanguageText(t('Current Language'))
     ;(async function () {
       const ret = await axios.get('https://catfact.ninja/fact')
       console.log(ret)
@@ -29,7 +40,9 @@ export function DDLSidebar({ children, lang }: DDLSidebarProps) {
           <div className={`${classes.header}`}>
             <p>Welcom to ddream land</p>
             <p> Logo Icon</p>
+            {/* {currentLanguageText} */}
             {t('Current Language')}
+            {now}
           </div>
           <div className={`${classes.panel}`}></div>
           <div className={`${classes.recent}`}></div>
