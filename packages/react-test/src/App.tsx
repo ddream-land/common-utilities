@@ -29,9 +29,9 @@ function App() {
       </button>
       <div style={{ height: '600px', width: '280px' }}>
         {/* ddreamland sidebar adptive parent size and position */}
-        <DDLSidebar></DDLSidebar>
+        {/* <DDLSidebar></DDLSidebar> */}
 
-        {/* <DDLSidebar lang={lang}></DDLSidebar> */}
+        <DDLSidebar lang={lang}></DDLSidebar>
         {/* <DDLSidebar lang="en" /> */}
         {/* <DDLSidebar lang="zh-CN" /> */}
       </div>
