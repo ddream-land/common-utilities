@@ -3,6 +3,7 @@ import classes from './DDLSidebar.module.scss'
 import { useLanguageManager } from '../../useLanguageManager'
 import { useMouseHoverOp } from './useMouseHoverOp.ts'
 import MiniView from './MiniView/MiniView.tsx'
+import FullView from './FullView/FullView.tsx'
 
 export type DDLSidebarProps = Readonly<{
   children?: React.ReactNode
@@ -19,12 +20,13 @@ export type DDLSidebarProps = Readonly<{
       en: string
       'zh-CN': string
     }
+    openUrl: string
   }
   minifyTimeout?: number
 }>
 
 export function DDLSidebar(props: DDLSidebarProps) {
-  const { children, lang, title, minifyTimeout = 2000, forceSize } = props
+  const { children, lang = 'en', title, minifyTimeout = 2000, forceSize } = props
 
   const {} = useLanguageManager(lang)
   const { mouseOnPanel, mouseOutofPanel, minify } = useMouseHoverOp(minifyTimeout)
@@ -38,15 +40,15 @@ export function DDLSidebar(props: DDLSidebarProps) {
         onMouseOver={mouseOnPanel}
         onMouseLeave={mouseOutofPanel}
         className={`${classes.wrapper} ${
-          showFullPanel ? 'overflow-y-auto scrollbar-override' : classes.minify
+          showFullPanel ? '' : classes.minify
         } w-full pointer-events-auto bg-transparent`}
       >
-        <div
-          className={`${classes.miniPanel} ${showFullPanel ? classes.fadeInOut : ''} w-full h-full`}
-        >
+        <div className={`${classes.miniPanel} ${showFullPanel ? 'hidden' : ''} w-full h-full`}>
           <MiniView title={title}></MiniView>
         </div>
-        <div className={`${classes.fullPanel} w-full h-full p-4 hidden`}></div>
+        <div className={`${classes.fullPanel} ${showFullPanel ? '' : 'hidden'} w-full h-full`}>
+          <FullView lang={lang} title={title}></FullView>
+        </div>
       </div>
     </div>
   )

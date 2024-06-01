@@ -1,20 +1,20 @@
-import classes from './MiniView.module.scss'
-import { DDLMiniIcon } from '../DDLIcon'
+import classes from './Header.module.scss'
+import DDLIcon from '../../DDLIcon'
 
-type MiniViewProps = Readonly<{
+type HeaderProps = Readonly<{
   title: {
     name: string
     color?: string
   }
 }>
 
-function MiniView({ title }: MiniViewProps) {
+export default function Header({ title }: HeaderProps) {
   const { name, color = 'rgba(181, 255, 58, 1)' } = title
 
   return (
-    <div className={`${classes.mini} flex flex-row w-full h-full`}>
-      <div className={`${classes.icon} h-full flex mt-1`}>
-        <DDLMiniIcon></DDLMiniIcon>
+    <div className={`${classes.header} w-full h-14 mt-4 flex flex-row px-4`}>
+      <div className={`${classes.icon} h-[59px] w-[46px] flex mt-2`}>
+        <DDLIcon></DDLIcon>
       </div>
       <div className={`${classes.title} ml-[16px] w-[96px] flex flex-col pt-2`}>
         <div className={`${classes.logo} h-[32px] w-full bg-no-repeat bg-cover`}></div>
@@ -25,5 +25,3 @@ function MiniView({ title }: MiniViewProps) {
     </div>
   )
 }
-
-export default MiniView

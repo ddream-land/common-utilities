@@ -1,7 +1,7 @@
 .sidebar {
   .wrapper {
     height: 100%;
-    transition: all 0.3s;
+    transition: all 0.2s;
 
     &.minify {
       width: 216px;
@@ -11,12 +11,6 @@
     }
 
     .miniPanel {
-      opacity: 1;
-      transition: opacity 0.3s;
-
-      &.fadeInOut {
-        opacity: 0;
-      }
     }
 
     .fullPanel {

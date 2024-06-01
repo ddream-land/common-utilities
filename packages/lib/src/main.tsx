@@ -8,7 +8,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <div style={{ height: '100%', width: '100%' }}>
       {/* ddreamland sidebar adptive parent size */}
-      <DDLSidebar title={{ name: 'STUDIO' }}></DDLSidebar>
+      <DDLSidebar title={{ name: 'STUDIO' }} lang="zh-CN"></DDLSidebar>
 
       {/* <DDLSidebar lang="en" />
       <DDLSidebar lang="zh-CN" /> */}
