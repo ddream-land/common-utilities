@@ -12,7 +12,7 @@ export default function Header({ title }: HeaderProps) {
   const { name, color = 'rgba(181, 255, 58, 1)' } = title
 
   return (
-    <div className={`${classes.header} w-full h-14 mt-4 flex flex-row px-4`}>
+    <div className={`${classes.header} w-full h-14 mt-8 flex flex-row px-8`}>
       <div className={`${classes.icon} h-[59px] w-[46px] flex mt-2`}>
         <DDLIcon></DDLIcon>
       </div>

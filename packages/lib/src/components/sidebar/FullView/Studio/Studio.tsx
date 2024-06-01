@@ -1,13 +1,14 @@
 import classes from './Studio.module.scss'
 import { useState, useEffect, CSSProperties } from 'react'
 import { useLanguageT } from '../../../../useLanguageT'
+import { SupportLangs } from '../../types'
 
 type StudioItem = {
   name: string
   redirectUrl: string
 }
 
-function getStudioItems(lang: 'en' | 'zh-CN' | undefined = 'en'): StudioItem[] {
+function getStudioItems(lang: SupportLangs | undefined = 'en'): StudioItem[] {
   return [
     {
       name: lang === 'en' ? '2D Avatar' : '2D头像',
@@ -27,7 +28,7 @@ function getStudioItems(lang: 'en' | 'zh-CN' | undefined = 'en'): StudioItem[] {
   ]
 }
 
-type StudioProps = Readonly<{ lang: 'en' | 'zh-CN'; className?: string }>
+type StudioProps = Readonly<{ lang: SupportLangs; className?: string }>
 
 export default function Studio({ lang, className }: StudioProps) {
   const { translation: tStudiosLang } = useLanguageT('Studios')
@@ -41,7 +42,7 @@ export default function Studio({ lang, className }: StudioProps) {
   )
 
   return (
-    <div className={`${classes.studio} ${className ?? ''} w-full`}>
+    <div className={`${classes.studio} ${className ?? ''} w-full px-4`}>
       <div className={`${classes.title} px-4`}>{tStudiosLang}</div>
       <div className={`${classes.items} mt-4 w-full`}>
         {studioItems.map(function (item) {

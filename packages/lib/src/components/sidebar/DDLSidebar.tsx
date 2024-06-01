@@ -4,34 +4,41 @@ import { useLanguageManager } from '../../useLanguageManager'
 import { useMouseHoverOp } from './useMouseHoverOp.ts'
 import MiniView from './MiniView/MiniView.tsx'
 import FullView from './FullView/FullView.tsx'
+import { RecentItem, SidebarSize, SidebarTitle, SupportLangs } from './types.ts'
+import { useEffect } from 'react'
 
 export type DDLSidebarProps = Readonly<{
   children?: React.ReactNode
-  lang?: 'en' | 'zh-CN'
-  title: {
-    name: string
-    color?: string
-  }
-  forceSize?: 'mini' | 'full'
-  recordRecent?: {
-    key: string
-    iconUrlOrBase64: string
-    name: {
-      en: string
-      'zh-CN': string
-    }
-    openUrl: string
-  }
+  lang?: SupportLangs
+  title: SidebarTitle
+  forceSize?: SidebarSize
+  recordRecent?: RecentItem
   minifyTimeout?: number
+  onPanelSizeChange?: (toFull: boolean) => void
 }>
 
 export function DDLSidebar(props: DDLSidebarProps) {
-  const { children, lang = 'en', title, minifyTimeout = 2000, forceSize } = props
+  const {
+    children,
+    lang = 'en',
+    title,
+    minifyTimeout = 2000,
+    forceSize,
+    recordRecent,
+    onPanelSizeChange,
+  } = props
 
   const {} = useLanguageManager(lang)
   const { mouseOnPanel, mouseOutofPanel, minify } = useMouseHoverOp(minifyTimeout)
 
   const showFullPanel = (forceSize === 'full' || !minify) && forceSize !== 'mini'
+
+  useEffect(
+    function () {
+      onPanelSizeChange && onPanelSizeChange(showFullPanel)
+    },
+    [showFullPanel]
+  )
 
   return (
     <div className={`${classes.sidebar} w-full h-full bg-transparent pointer-events-none`}>
@@ -47,7 +54,7 @@ export function DDLSidebar(props: DDLSidebarProps) {
           <MiniView title={title}></MiniView>
         </div>
         <div className={`${classes.fullPanel} ${showFullPanel ? '' : 'hidden'} w-full h-full`}>
-          <FullView lang={lang} title={title}></FullView>
+          <FullView lang={lang} title={title} recordRecent={recordRecent}></FullView>
         </div>
       </div>
     </div>

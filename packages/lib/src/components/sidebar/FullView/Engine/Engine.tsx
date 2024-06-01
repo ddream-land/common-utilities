@@ -1,13 +1,14 @@
 import classes from './Engine.module.scss'
 import { useState, useEffect, CSSProperties } from 'react'
 import { useLanguageT } from '../../../../useLanguageT'
+import { SupportLangs } from '../../types'
 
 type EngineItem = {
   name: string
   redirectUrl: string
 }
 
-function getEngineItems(lang: 'en' | 'zh-CN' | undefined = 'en'): EngineItem[] {
+function getEngineItems(lang: SupportLangs | undefined = 'en'): EngineItem[] {
   return [
     {
       name: lang === 'en' ? 'FuHsi Saga' : 'Saga引擎',
@@ -16,7 +17,7 @@ function getEngineItems(lang: 'en' | 'zh-CN' | undefined = 'en'): EngineItem[] {
   ]
 }
 
-type EngineProps = Readonly<{ lang: 'en' | 'zh-CN'; className?: string }>
+type EngineProps = Readonly<{ lang: SupportLangs; className?: string }>
 
 export default function Engine({ lang, className }: EngineProps) {
   const { translation: tEnginesLang } = useLanguageT('Engines')
@@ -30,7 +31,7 @@ export default function Engine({ lang, className }: EngineProps) {
   )
 
   return (
-    <div className={`${classes.engine} ${className ?? ''} w-full`}>
+    <div className={`${classes.engine} ${className ?? ''} w-full px-4`}>
       <div className={`${classes.title} px-4`}>{tEnginesLang}</div>
       <div className={`${classes.items} mt-4 w-full`}>
         {engineItems.map(function (item) {

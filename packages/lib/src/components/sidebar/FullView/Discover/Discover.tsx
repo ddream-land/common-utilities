@@ -1,6 +1,7 @@
 import classes from './Discover.module.scss'
 import { useState, useEffect, CSSProperties } from 'react'
 import { useLanguageT } from '../../../../useLanguageT'
+import { SupportLangs } from '../../types'
 
 type DiscoverItem = {
   iconUrl: string
@@ -9,7 +10,7 @@ type DiscoverItem = {
   redirectUrl: string
 }
 
-function getDiscoverItems(lang: 'en' | 'zh-CN' | undefined = 'en'): DiscoverItem[] {
+function getDiscoverItems(lang: SupportLangs | undefined = 'en'): DiscoverItem[] {
   return [
     {
       name: lang === 'en' ? 'Game Store' : '游戏中心',
@@ -25,7 +26,7 @@ function getDiscoverItems(lang: 'en' | 'zh-CN' | undefined = 'en'): DiscoverItem
   ]
 }
 
-type DiscoverProps = Readonly<{ lang: 'en' | 'zh-CN'; className?: string }>
+type DiscoverProps = Readonly<{ lang: SupportLangs; className?: string }>
 
 export default function Discover({ lang, className }: DiscoverProps) {
   const { translation: tDiscoverLang } = useLanguageT('Discover')
@@ -39,7 +40,7 @@ export default function Discover({ lang, className }: DiscoverProps) {
   )
 
   return (
-    <div className={`${classes.discover} ${className ?? ''} w-full`}>
+    <div className={`${classes.discover} ${className ?? ''} w-full px-4`}>
       <div className={`${classes.title} px-4`}>{tDiscoverLang}</div>
       <div className={`${classes.items} mt-4 w-full`}>
         {discoverItems.map(function (item) {

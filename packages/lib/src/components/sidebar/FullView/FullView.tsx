@@ -6,18 +6,18 @@ import Header from './Header/Header.tsx'
 import Discover from './Discover/Discover.tsx'
 import Studio from './Studio/Studio.tsx'
 import Engine from './Engine/Engine.tsx'
+import Recent from './Recent/Recent.tsx'
+import { SidebarTitle, SupportLangs, RecentItem } from '../types.ts'
 
 type FullViewProps = Readonly<{
-  lang: 'en' | 'zh-CN'
-  title: {
-    name: string
-    color?: string
-  }
+  lang: SupportLangs
+  title: SidebarTitle
+  recordRecent?: RecentItem
 }>
 
-export default function FullView({ lang, title }: FullViewProps) {
+export default function FullView({ lang, title, recordRecent }: FullViewProps) {
   return (
-    <div className={`${classes.full} w-full h-full p-4 overflow-y-auto scrollbar-override`}>
+    <div className={`${classes.full} w-full h-full overflow-y-auto scrollbar-override`}>
       <Header title={title}></Header>
 
       <SplitLine className={`mt-6`}></SplitLine>
@@ -34,7 +34,7 @@ export default function FullView({ lang, title }: FullViewProps) {
 
       <SplitLine className={`mt-6`}></SplitLine>
 
-      <div className={`${classes.recent}`}></div>
+      <Recent lang={lang} className="mt-6" recordRecent={recordRecent}></Recent>
     </div>
   )
 }
