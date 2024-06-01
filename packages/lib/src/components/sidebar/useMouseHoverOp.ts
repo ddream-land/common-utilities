@@ -14,7 +14,7 @@ export function useMouseHoverOp(minifyTimeout: number) {
     MINIFY_TIMER_SIGNAL && clearTimeout(MINIFY_TIMER_SIGNAL)
     MINIFY_TIMER_SIGNAL = window.setTimeout(() => {
       setMinify(true)
-    }, MINIFY_TIMER_SIGNAL)
+    }, minifyTimeout)
   }
 
   return {

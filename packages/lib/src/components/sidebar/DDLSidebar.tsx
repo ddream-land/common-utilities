@@ -15,7 +15,7 @@ export type DDLSidebarProps = Readonly<{
   forceSize?: 'mini' | 'full'
   recordRecent?: {
     key: string
-    iconUrl: string
+    iconUrlOrBase64: string
     name: {
       en: string
       'zh-CN': string
