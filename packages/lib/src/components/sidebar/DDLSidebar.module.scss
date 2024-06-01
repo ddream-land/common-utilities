@@ -1,66 +1,25 @@
 .sidebar {
   .wrapper {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(0, 0, 0, 1);
-    border-radius: 20px;
+    height: 100%;
+    transition: all 0.3s;
 
-    // @media (max-height: 600px) {
-    //   .minify {
-    //     display: block !important;
-    //   }
+    &.minify {
+      width: 216px;
+      height: 72px;
+      border-radius: 36px;
+      overflow: hidden;
+    }
 
-    //   .content {
-    //     display: none !important;
-    //   }
-    // }
+    .miniPanel {
+      opacity: 1;
+      transition: opacity 0.3s;
 
-    // .minify {
-    //   display: none;
-    //   background-color: antiquewhite;
-    // }
-    .content {
-      .line {
-        height: 1px;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.3);
+      &.fadeInOut {
+        opacity: 0;
       }
-      .header {
-        height: 100px;
-      }
-      .panels {
-        .panel {
-          padding: 12px 0px;
-          .title {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: rgb(108, 108, 108);
-          }
-          .items {
-            margin-top: 8px;
+    }
 
-            .item {
-              padding: 4px 0;
-
-              .info {
-                .icon {
-                }
-                .name {
-                  font-size: 12px;
-                  font-weight: 600;
-                  letter-spacing: 0.5px;
-                }
-              }
-
-              .arrow {
-                color: rgb(108, 108, 108);
-              }
-            }
-          }
-        }
-      }
-      .recent {
-      }
+    .fullPanel {
     }
   }
 }
