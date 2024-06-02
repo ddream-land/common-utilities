@@ -22,5 +22,6 @@ export function useMouseHoverOp(minifyTimeout: number) {
     mouseOutofPanel,
 
     minify,
+    setMinify,
   }
 }
