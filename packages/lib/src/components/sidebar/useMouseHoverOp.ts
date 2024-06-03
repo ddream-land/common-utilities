@@ -6,15 +6,19 @@ export function useMouseHoverOp(minifyTimeout: number) {
   const [minify, setMinify] = useState(true)
 
   function mouseOnPanel() {
-    MINIFY_TIMER_SIGNAL && clearTimeout(MINIFY_TIMER_SIGNAL)
+    clearTimeout()
     setMinify(false)
   }
 
   function mouseOutofPanel() {
-    MINIFY_TIMER_SIGNAL && clearTimeout(MINIFY_TIMER_SIGNAL)
+    clearTimeout()
     MINIFY_TIMER_SIGNAL = window.setTimeout(() => {
       setMinify(true)
     }, minifyTimeout)
+  }
+
+  function clearTimeout() {
+    MINIFY_TIMER_SIGNAL && window.clearTimeout(MINIFY_TIMER_SIGNAL)
   }
 
   return {
@@ -23,5 +27,7 @@ export function useMouseHoverOp(minifyTimeout: number) {
 
     minify,
     setMinify,
+
+    clearTimeout,
   }
 }

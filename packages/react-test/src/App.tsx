@@ -8,6 +8,7 @@ import { DDLSidebar } from '@ddreamland/common'
 function App() {
   const [count, setCount] = useState(0)
   const [lang, setLang] = useState<'en' | 'zh-CN'>('en')
+  const [size, setSize] = useState<'mini' | 'full' | undefined>(undefined)
 
   return (
     <>
@@ -27,11 +28,18 @@ function App() {
       >
         Switch lang
       </button>
+      <button
+        onClick={() => {
+          size ? setSize(undefined) : setSize('mini')
+        }}
+      >
+        Switch Force size: {size}
+      </button>
       <div style={{ height: '600px', width: '280px' }}>
         {/* ddreamland sidebar adptive parent size and position */}
         {/* <DDLSidebar></DDLSidebar> */}
 
-        <DDLSidebar lang={lang}></DDLSidebar>
+        <DDLSidebar title={{ name: 'QWE' }} lang={lang} forceSize={size}></DDLSidebar>
         {/* <DDLSidebar lang="en" /> */}
         {/* <DDLSidebar lang="zh-CN" /> */}
       </div>

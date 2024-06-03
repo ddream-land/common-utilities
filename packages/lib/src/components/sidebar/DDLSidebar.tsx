@@ -29,7 +29,8 @@ export function DDLSidebar(props: DDLSidebarProps) {
   } = props
 
   const {} = useLanguageManager(lang)
-  const { mouseOnPanel, mouseOutofPanel, minify, setMinify } = useMouseHoverOp(minifyTimeout)
+  const { mouseOnPanel, mouseOutofPanel, minify, setMinify, clearTimeout } =
+    useMouseHoverOp(minifyTimeout)
 
   const showFullPanel = (forceSize === 'full' || !minify) && forceSize !== 'mini'
 
@@ -42,7 +43,8 @@ export function DDLSidebar(props: DDLSidebarProps) {
 
   useEffect(
     function () {
-      if (forceSize === 'mini') {
+      clearTimeout()
+      if (forceSize === 'mini' || forceSize === undefined) {
         setMinify(true)
       } else if (forceSize === 'full') {
         setMinify(false)

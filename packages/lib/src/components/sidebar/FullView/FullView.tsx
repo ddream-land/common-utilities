@@ -34,7 +34,7 @@ export default function FullView({ lang, title, recordRecent }: FullViewProps) {
 
       <SplitLine className={`mt-6`}></SplitLine>
 
-      <Recent lang={lang} className="mt-6" recordRecent={recordRecent}></Recent>
+      <Recent lang={lang} className="my-6" recordRecent={recordRecent}></Recent>
     </div>
   )
 }
