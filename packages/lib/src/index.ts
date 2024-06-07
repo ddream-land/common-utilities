@@ -5,3 +5,6 @@ import './index.scss'
 
 export { DDLSidebar } from './components/sidebar/DDLSidebar'
 export type { DDLSidebarProps } from './components/sidebar/DDLSidebar'
+
+export { DDLSplitLine } from './components/splitLine/DDLSplitLine'
+export type { DDLSplitLineProps } from './components/splitLine/DDLSplitLine'
