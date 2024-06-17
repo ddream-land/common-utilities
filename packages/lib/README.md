@@ -89,5 +89,18 @@ export function Container() {
   {/* <DDLSidebar lang={lang}></DDLSidebar> */}
   {/* <DDLSidebar lang="en" /> */}
   {/* <DDLSidebar lang="zh-CN" /> */}
+  
+  <LoginModal
+    isOpen={isOpen}
+    locale={locale}
+    onClose={() => {
+      setIsOpen(false);
+    }}
+    onLogin={() => {
+      setIsOpen(false);
+      // do something
+    }}
+  />
 </div>
 ```
+
