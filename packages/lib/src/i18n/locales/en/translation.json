@@ -3,5 +3,10 @@
   "Discover": "DISCOVER",
   "Studios": "STUDIOS",
   "Engines": "ENGINES",
-  "Recent": "RECENT"
+  "Recent": "RECENT",
+  "purchase": "Purchase",
+  "dream": "Dream",
+  "tokens": "Tokens",
+  "basicMonth": "Basic Month",
+  "advancedMonth": "Advanced Month"
 }
