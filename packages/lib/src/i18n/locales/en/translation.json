@@ -5,8 +5,10 @@
   "Engines": "ENGINES",
   "Recent": "RECENT",
   "purchase": "Purchase",
-  "dream": "Dream",
-  "tokens": "Tokens",
-  "basicMonth": "Basic Month",
-  "advancedMonth": "Advanced Month"
+  "dreamToken": "Dream Token",
+  "dreamTokens": "Dream Tokens",
+  "limitedTimeOnSaleEndIn": "Limited time on-sale, end in",
+  "days": "days",
+  "hours": "hours",
+  "mins": "mins"
 }

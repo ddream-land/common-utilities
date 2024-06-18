@@ -4,8 +4,9 @@ import { useLanguageManager } from '../../useLanguageManager'
 import { useMouseHoverOp } from './useMouseHoverOp.ts'
 import MiniView from './MiniView/MiniView.tsx'
 import FullView from './FullView/FullView.tsx'
-import { RecentItem, SidebarSize, SidebarTitle, SupportLangs } from './types.ts'
+import { RecentItem, SidebarSize, SidebarTitle } from './types.ts'
 import { useEffect } from 'react'
+import { SupportLangs } from '../../types/SupportLangs.ts'
 
 export type DDLSidebarProps = Readonly<{
   children?: React.ReactNode

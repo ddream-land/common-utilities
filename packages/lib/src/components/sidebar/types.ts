@@ -1,5 +1,3 @@
-export type SupportLangs = 'en' | 'zh-CN'
-
 export type SidebarSize = 'mini' | 'full'
 
 export type SidebarTitle = {
