@@ -5,6 +5,7 @@ import { SupportLangs } from '../../types/SupportLangs'
 import { dreamlandLogo, payWithStripe, priceBg } from './images'
 import { useEffect, useState } from 'react'
 import { baseApiHander } from '../../utils/base.api'
+import { useLanguageManager } from '../../useLanguageManager'
 
 export type DDLPayProps = Readonly<{
   className?: string
@@ -21,6 +22,8 @@ type Price = {
 }
 
 function DDLPay({ isOpen, onOpenChange, className, lang }: DDLPayProps) {
+  const {} = useLanguageManager(lang)
+
   const { translation: tPurchase } = useLanguageT('purchase')
   const { translation: tDreamToken } = useLanguageT('dreamToken')
   const { translation: tDreamTokens } = useLanguageT('dreamTokens')
