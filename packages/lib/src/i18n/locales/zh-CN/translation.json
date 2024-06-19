@@ -10,5 +10,8 @@
   "limitedTimeOnSaleEndIn": "限时折扣倒计时",
   "days": "days",
   "hours": "hours",
-  "mins": "mins"
+  "mins": "mins",
+  "payment": "付款",
+  "paymentDesc": "请在付款页面完成支付。",
+  "paymentCompleted": "支付完成"
 }
