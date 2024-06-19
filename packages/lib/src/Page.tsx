@@ -1,21 +1,23 @@
-import { useState } from 'react'
 import { DDLPay } from './components/pay/DDLPay'
-import { NextUIProvider } from '@nextui-org/system'
 import { useDisclosure } from '@nextui-org/react'
 
 function Page() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: true })
+  const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: false })
 
   return (
-    <NextUIProvider className="w-full h-full">
-      <div className="w-full h-full bg-white">
-        <div className="bg-white" onClick={() => onOpen()}>
-          Switch Open
-        </div>
-        {/* <DDLPay></DDLPay> */}
-        <DDLPay isOpen={isOpen} onOpenChange={onOpenChange} lang="zh-CN"></DDLPay>
+    <div className="w-full h-full bg-white">
+      <div className="bg-white text-black" onClick={() => onOpen()}>
+        Pay
       </div>
-    </NextUIProvider>
+      <DDLPay
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        onPaymentComplete={() => {
+          console.log('payment complete')
+        }}
+        lang="zh-CN"
+      ></DDLPay>
+    </div>
   )
 }
 

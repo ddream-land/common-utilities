@@ -10,5 +10,8 @@
   "limitedTimeOnSaleEndIn": "Limited time on-sale, end in",
   "days": "days",
   "hours": "hours",
-  "mins": "mins"
+  "mins": "mins",
+  "payment": "Payment",
+  "paymentDesc": "Please complete the payment on the payment page.",
+  "paymentCompleted": "Payment completed"
 }

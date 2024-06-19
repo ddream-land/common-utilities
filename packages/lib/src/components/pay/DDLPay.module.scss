@@ -61,3 +61,29 @@
     }
   }
 }
+
+.payment {
+  .title {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+  }
+  .desc {
+    //styleName: text-sm/leading-5/font-medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+  }
+  .btn {
+    //styleName: Base/base 2 B;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+    text-align: left;
+  }
+}
