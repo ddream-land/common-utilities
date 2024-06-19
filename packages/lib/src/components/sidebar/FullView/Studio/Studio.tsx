@@ -1,7 +1,7 @@
 import classes from './Studio.module.scss'
 import { useState, useEffect, CSSProperties } from 'react'
 import { useLanguageT } from '../../../../useLanguageT'
-import { SupportLangs } from '../../types'
+import { SupportLangs } from '@/types/SupportLangs'
 
 type StudioItem = {
   name: string

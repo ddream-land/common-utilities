@@ -1,7 +1,7 @@
 import classes from './Engine.module.scss'
 import { useState, useEffect, CSSProperties } from 'react'
 import { useLanguageT } from '../../../../useLanguageT'
-import { SupportLangs } from '../../types'
+import { SupportLangs } from '@/types/SupportLangs'
 
 type EngineItem = {
   name: string

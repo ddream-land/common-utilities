@@ -7,7 +7,8 @@ import Discover from './Discover/Discover.tsx'
 import Studio from './Studio/Studio.tsx'
 import Engine from './Engine/Engine.tsx'
 import Recent from './Recent/Recent.tsx'
-import { SidebarTitle, SupportLangs, RecentItem } from '../types.ts'
+import { SupportLangs } from '@/types/SupportLangs'
+import { SidebarTitle, RecentItem } from '../types.ts'
 
 type FullViewProps = Readonly<{
   lang: SupportLangs

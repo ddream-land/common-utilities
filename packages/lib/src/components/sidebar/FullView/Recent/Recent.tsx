@@ -2,7 +2,8 @@ import classes from './Recent.module.scss'
 import { useEffect } from 'react'
 import { useLanguageT } from '../../../../useLanguageT'
 import { useLocalStorage } from '../../../../hooks/useLocalStorage'
-import { RecentItem, SupportLangs } from '../../types'
+import { RecentItem } from '../../types'
+import { SupportLangs } from '@/types/SupportLangs'
 
 const LOCALSTORAGE_KEY = 'ddreamland-sidebar-recent'
 
