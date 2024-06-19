@@ -1,10 +1,10 @@
-import { Image } from '@nextui-org/react'
+import { Button, Image } from '@nextui-org/react'
 import classes from './DDLPay.module.scss'
 import { useLanguageT } from '../../useLanguageT'
 import { SupportLangs } from '../../types/SupportLangs'
 import { dreamlandLogo, payWithStripe, priceBg } from './images'
 import { useEffect, useState } from 'react'
-import { baseApiHander } from '../../utils/base.api'
+import { http } from '../../utils/http'
 import { useLanguageManager } from '../../useLanguageManager'
 
 export type DDLPayProps = Readonly<{
@@ -33,34 +33,11 @@ function DDLPay({ isOpen, onOpenChange, className, lang }: DDLPayProps) {
   const { translation: tHours } = useLanguageT('hours')
   const { translation: tMins } = useLanguageT('mins')
 
-  const [currentSelect, setCurrentSelect] = useState('')
+  const [currentSelectPkgId, setCurrentSelectPkgId] = useState('')
 
-  const [prices, setPrices] = useState<Price[]>([
-    {
-      package_id: '1',
-      ori_price: 2500,
-      price: 500,
-      product_num: 1,
-    },
-    {
-      package_id: '2',
-      ori_price: 2500,
-      price: 500,
-      product_num: 1,
-    },
-    {
-      package_id: '3',
-      ori_price: 2500,
-      price: 500,
-      product_num: 1,
-    },
-    {
-      package_id: '4',
-      ori_price: 2500,
-      price: 500,
-      product_num: 1,
-    },
-  ])
+  const [payBtnLoading, setPayBtnLoading] = useState(false)
+
+  const [prices, setPrices] = useState<Price[]>([])
   const [config, setConfig] = useState({
     currency: 'usd',
     unit_amount: 100,
@@ -105,20 +82,86 @@ function DDLPay({ isOpen, onOpenChange, className, lang }: DDLPayProps) {
     calcOnSaleState()
   }, 60 * 1000)
 
+  async function refreshPrices() {
+    const res = await http({
+      url: `/api/v1/finance/sales`,
+      init: {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+      mustLogin: true,
+    })
+    if (!res || !res.ok) {
+      return
+    }
+    const resJson = await res.json()
+    if (resJson.code !== 0) {
+      return
+    }
+
+    const data = resJson.data
+    const priceList = data.list
+    if (!priceList || !Array.isArray(priceList)) {
+      return
+    }
+
+    const list = priceList as {
+      ori_price: number
+      package_id: string
+      price: number
+      product_id: string
+      product_num: number
+      status: number
+      stripe_price_id: string
+      stripe_product_id: string
+    }[]
+
+    setPrices(list)
+  }
+
+  async function onPayClicked() {
+    if (!currentSelectPkgId) {
+      return
+    }
+
+    setPayBtnLoading(true)
+
+    const res = await http({
+      url: `/api/v1/finance/create`,
+      init: {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ package_id: currentSelectPkgId, pay_source: 'stripe' }),
+      },
+      mustLogin: true,
+    })
+    setPayBtnLoading(false)
+
+    if (!res || !res.ok) {
+      return
+    }
+    const resJson = await res.json()
+    if (resJson.code !== 0) {
+      return
+    }
+
+    const data = resJson.data
+    if (!('url' in data)) {
+      return
+    }
+
+    const url = data.url
+    window.open(url, 'blank')
+  }
+
   useEffect(function () {
     calcOnSaleState()
     ;(async function () {
-      const res = await baseApiHander({
-        url: `/api/v1/finance/sales`,
-        init: {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-        mustLogin: true,
-      })
-      console.log(res)
+      await refreshPrices()
     })()
   }, [])
 
@@ -186,10 +229,10 @@ function DDLPay({ isOpen, onOpenChange, className, lang }: DDLPayProps) {
                   <div
                     key={index}
                     onClick={(e) => {
-                      setCurrentSelect(price.package_id)
+                      setCurrentSelectPkgId(price.package_id)
                     }}
                     className={`${classes.pricePanel} ${
-                      currentSelect === price.package_id ? classes.selected : ''
+                      currentSelectPkgId === price.package_id ? classes.selected : ''
                     } cursor-pointer w-[180px] h-[240px] border-1 border-[#353535] rounded-[14px] flex flex-row justify-center items-center relative`}
                     style={{
                       backgroundImage: `url(${priceBg})`,
@@ -210,12 +253,15 @@ function DDLPay({ isOpen, onOpenChange, className, lang }: DDLPayProps) {
             </div>
 
             <div className="flex flex-row justify-center items-center mt-[90px]">
-              <div
+              <Button
+                onClick={onPayClicked}
+                disabled={!currentSelectPkgId}
+                isLoading={payBtnLoading}
                 className={`w-[313px] h-[62px] rounded-[16px] cursor-pointer`}
                 style={{
                   backgroundImage: `url(${payWithStripe})`,
                 }}
-              ></div>
+              ></Button>
             </div>
           </div>
         </div>

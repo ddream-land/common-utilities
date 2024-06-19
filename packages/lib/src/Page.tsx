@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DDLPay } from './components/pay/DDLPay'
-import { NextUIProvider } from '@nextui-org/system'
+import { NextUIProvider } from '@nextui-org/react'
 import { useDisclosure } from '@nextui-org/react'
+import { http } from './utils/http'
 
 function Page() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: true })
+  const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: false })
 
   return (
     <NextUIProvider className="w-full h-full">
