@@ -8,7 +8,7 @@
   "dreamToken": "Dream Token",
   "dreamTokens": "Dream Tokens",
   "limitedTimeOnSaleEndIn": "限时折扣倒计时",
-  "days": "days",
-  "hours": "hours",
-  "mins": "mins"
+  "days": "天",
+  "hours": "小时",
+  "mins": "分钟"
 }

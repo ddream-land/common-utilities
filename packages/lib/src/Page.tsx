@@ -13,7 +13,7 @@ function Page() {
           Switch Open
         </div>
         {/* <DDLPay></DDLPay> */}
-        <DDLPay isOpen={isOpen} onOpenChange={onOpenChange}></DDLPay>
+        <DDLPay isOpen={isOpen} onOpenChange={onOpenChange} lang="zh-CN"></DDLPay>
       </div>
     </NextUIProvider>
   )
