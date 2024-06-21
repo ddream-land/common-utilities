@@ -20,4 +20,6 @@ export function setBaseUrl(url: string) {
 }
 
 export * from './utils/constant'
-export * from './utils/auth'
+import Auth from './utils/auth'
+
+export { Auth }
