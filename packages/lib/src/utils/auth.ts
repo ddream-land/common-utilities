@@ -1,5 +1,6 @@
-import { getCookie } from 'typescript-cookie'
+import { getCookie, removeCookie } from 'typescript-cookie'
 import { NUWA_SESSION, NUWA_UID } from './constant'
+import { http } from './http'
 
 const auth = {
   get isLogin() {
@@ -15,6 +16,24 @@ const auth = {
 
   get session() {
     return getCookie(NUWA_SESSION)
+  },
+
+  logout: async function () {
+    if (!this.isLogin) {
+      return
+    }
+    try {
+      await http({
+        url: `/api/v1/user/logout`,
+        init: {
+          method: 'POST',
+        },
+        mustLogin: true,
+      })
+    } catch {}
+
+    removeCookie(NUWA_UID)
+    removeCookie(NUWA_SESSION)
   },
 }
 
