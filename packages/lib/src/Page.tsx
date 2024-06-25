@@ -1,13 +1,14 @@
 import { DDLPay } from './components/pay/DDLPay'
 import { useDisclosure } from '@nextui-org/react'
 import { DDLSidebar } from './components/sidebar/DDLSidebar'
+import { LoginModal } from './components/nuwa-login-ui/LoginModal'
 
 function Page() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: false })
 
   return (
     <div className="w-full h-full bg-white">
-      <DDLSidebar title={{ name: '123' }}></DDLSidebar>
+      {/* <DDLSidebar title={{ name: '123' }}></DDLSidebar>
       <div className="bg-white text-black" onClick={() => onOpen()}>
         Pay
       </div>
@@ -18,7 +19,9 @@ function Page() {
           console.log('payment complete')
         }}
         lang="zh-CN"
-      ></DDLPay>
+      ></DDLPay> */}
+
+      <LoginModal isOpen={true}></LoginModal>
     </div>
   )
 }
