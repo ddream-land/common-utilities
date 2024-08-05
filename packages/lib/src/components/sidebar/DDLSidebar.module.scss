@@ -1,0 +1,19 @@
+.sidebar {
+  .wrapper {
+    height: 100%;
+    transition: all 0.2s;
+
+    &.minify {
+      width: 216px;
+      height: 72px;
+      border-radius: 36px;
+      overflow: hidden;
+    }
+
+    .miniPanel {
+    }
+
+    .fullPanel {
+    }
+  }
+}

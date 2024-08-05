@@ -1,0 +1,71 @@
+.recent {
+  .title {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    text-align: left;
+    color: rgba(107, 108, 112, 1);
+  }
+
+  .items {
+    .item {
+      height: 42px;
+      border-radius: 8px;
+
+      .currentFlag {
+        width: 6px;
+        height: 20px;
+        background: rgba(91, 97, 255, 1);
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+
+      &.current {
+        &:hover {
+          background-color: transparent;
+        }
+
+        .content {
+          color: rgba(91, 97, 255, 1);
+        }
+      }
+
+      &:hover {
+        background-color: rgba(31, 33, 36, 1);
+
+        .content {
+          .close {
+            opacity: 1;
+          }
+        }
+      }
+
+      .content {
+        color: white;
+
+        .info {
+          .name {
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 16px;
+            letter-spacing: 0.07em;
+            text-align: left;
+          }
+        }
+
+        .close {
+          color: rgb(255, 255, 255);
+          opacity: 0.3;
+
+          &::after {
+            display: inline-block;
+            content: '\00d7';
+          }
+        }
+      }
+    }
+  }
+}

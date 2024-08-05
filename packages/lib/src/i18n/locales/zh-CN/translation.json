@@ -1,0 +1,23 @@
+{
+  "Current Language": "当前语言: 中文",
+  "Discover": "探索",
+  "Studios": "工作空间",
+  "Engines": "引擎",
+  "Recent": "最近",
+  "purchase": "购买",
+  "dreamToken": "Dream Token",
+  "dreamTokens": "Dream Tokens",
+  "limitedTimeOnSaleEndIn": "限时折扣倒计时",
+  "days": "天",
+  "hours": "小时",
+  "mins": "分钟",
+  "payment": "付款",
+  "paymentDesc": "请在付款页面完成支付。",
+  "paymentCompleted": "支付完成",
+  "afterExchangePower": "兑换后，体力",
+  "extra": "额外",
+  "exchange": "兑换",
+  "insufficientBalance": "余额不足",
+  "exchangeSuccess": "兑换成功",
+  "exchangeNote": "白名单用户每日免费体力已用完，可用白日梦币兑换体力值"
+}

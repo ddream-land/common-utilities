@@ -1,0 +1,23 @@
+{
+  "Current Language": "Current Lang: en",
+  "Discover": "DISCOVER",
+  "Studios": "STUDIOS",
+  "Engines": "ENGINES",
+  "Recent": "RECENT",
+  "purchase": "Purchase",
+  "dreamToken": "Dream Token",
+  "dreamTokens": "Dream Tokens",
+  "limitedTimeOnSaleEndIn": "Limited time on-sale, end in",
+  "days": "days",
+  "hours": "hours",
+  "mins": "mins",
+  "payment": "Payment",
+  "paymentDesc": "Please complete the payment on the payment page.",
+  "paymentCompleted": "Payment completed",
+  "afterExchangePower": "After exchange, Power",
+  "extra": "Extra",
+  "exchange": "Exchange",
+  "insufficientBalance": "Insufficient Balance",
+  "exchangeSuccess": "Exchange success",
+  "exchangeNote": "The daily free stamina for whitelisted users has been used up. You can use Dream Tokens to exchange for stamina."
+}

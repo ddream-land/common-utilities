@@ -1,0 +1,57 @@
+.discover {
+  .title {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    text-align: left;
+    color: rgba(107, 108, 112, 1);
+  }
+
+  .items {
+    .item {
+      height: 42px;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: rgba(31, 33, 36, 1);
+
+        .content {
+          .info {
+            .icon {
+              background-image: var(--activeIconUrl);
+            }
+          }
+
+          .arrow {
+            opacity: 1;
+          }
+        }
+      }
+
+      .content {
+        color: white;
+
+        .info {
+          .icon {
+            background-image: var(--iconUrl);
+          }
+          .name {
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 16px;
+            letter-spacing: 0.07em;
+            text-align: left;
+          }
+        }
+
+        .arrow {
+          color: rgb(255, 255, 255);
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+}

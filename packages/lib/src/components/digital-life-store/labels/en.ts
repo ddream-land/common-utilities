@@ -1,0 +1,36 @@
+const enLabels = {
+  DigitalLifeStore: {
+    digitalLifeInformation: "Digital Life's Information",
+    greeting: "Greeting",
+    personality: "Personality",
+    description: "Description",
+    world: "World",
+    voice: "Voice",
+    avatar: "Avatar",
+    star: "Star",
+    runOnRoleAI: "Run on Role.AI",
+    runnings: "Runnings",
+    downloads: "Downloads",
+    sharing: "Sharing",
+    version: "Version",
+    publishDate: "Publish Date",
+    joined: "Joined",
+    comeSoon: "Coming Soon",
+    preview: "Preview",
+    downloadCharacterCard: "Download Character Card",
+    copyToClipboard: "Copy to Clipboard",
+    unknownAuthor: "Unknown Author",
+    unknownAuthor2: "Unknown",
+    displayNoneText1: "It seems like there's nothing here.",
+    displayNoneText2: "Try to do something.",
+  },
+  Alter: {
+    sysfail: "System fail",
+    successfullyRunedOnRoleAI: "Successfully runned on Role.AI",
+    failToDownloadDigitalLifeCard: "Fail to download Digital Life Card, please try again later",
+    apiReturnError: "API return error",
+    characterCardNotExist: "Character Card not exist",
+  },
+};
+
+export default enLabels;

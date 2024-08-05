@@ -1,0 +1,36 @@
+const zhCNLabels = {
+  DigitalLifeStore: {
+    digitalLifeInformation: "数字生命信息",
+    greeting: "打招呼语",
+    personality: "个性",
+    description: "描述",
+    world: "世界观",
+    voice: "声音",
+    avatar: "形象",
+    star: "收藏",
+    runOnRoleAI: "在人物AI上运行",
+    runnings: "运行次数",
+    downloads: "下载次数",
+    sharing: "分享次数",
+    version: "版本",
+    publishDate: "发布日期",
+    joined: "加入时间",
+    comeSoon: "即将上线",
+    preview: "预览",
+    downloadCharacterCard: "下载人物卡",
+    copyToClipboard: "复制到剪贴板",
+    unknownAuthor: "未知作者",
+    unknownAuthor2: "未知",
+    displayNoneText1: "看起来这里什么都没有，",
+    displayNoneText2: "试着做点什么吧。",
+  },
+  Alter: {
+    sysfail: "系统错误",
+    successfullyRunedOnRoleAI: "成功在人物AI上运行",
+    failToDownloadDigitalLifeCard: "下载人物卡失败，请稍后重试",
+    apiReturnError: "API返回错误",
+    characterCardNotExist: "人物卡不存在",
+  },
+};
+
+export default zhCNLabels;
