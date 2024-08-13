@@ -14,7 +14,8 @@ import { BalanceType } from './utils/BalanceType'
 import DDLUrl from './utils/url'
 
 function Page() {
-  DDLUrl.setBaseUrl('https://test-service.ddream.land')
+  // DDLUrl.setBaseUrl('https://test-service.ddream.land')
+  DDLUrl.setBaseUrl('https://test-srv.saga.nirvanaworld.cn')
   const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: false })
   const [ocQuickCreateOpen, setOcQuickCreateOpen] = useState(false)
   const [ocQuickCreateOpenCustom, setOcQuickCreateOpenCustom] = useState(false)

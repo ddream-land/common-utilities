@@ -78,7 +78,11 @@ export default function Register({
   const sendCodeToMailHandler = async () => {
     if (sendingCode) return
     setSendingCode(true)
-    const res = await mailCodeApi.send({email: email, type: 1});
+    const res = await mailCodeApi.send({
+      email: email,
+      type: 1,
+      source: 2
+    });
     if (res && res.code === 0) {
       setRequestId(res.data.request_id)
       setCount(CountLimit - 1)
