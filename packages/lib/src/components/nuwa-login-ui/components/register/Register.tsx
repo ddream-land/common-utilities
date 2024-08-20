@@ -10,7 +10,8 @@ export type RegisterVarinats = "register" | "resetPassword" | "deleteUser"
 
 export default function Register({
   variant,
-  loginModel,
+  defaultLoginType,
+  canSwitchLoginType,
   inviter,
   gotoLogin,
   onDone,
@@ -18,14 +19,15 @@ export default function Register({
   onClose,
 }: {
   variant: RegisterVarinats
-  loginModel: 'email' | 'phone'
+  defaultLoginType: 'email' | 'phone'
+  canSwitchLoginType?: boolean
   inviter?: number | undefined
   gotoLogin?: () => void
   onDone?: () => void
   isCloseable?: boolean
   onClose?: () => void
 }) {
-  const [ loginType, setLoginType ] = useState<'email' | 'phone'>(loginModel);
+  const [ loginType, setLoginType ] = useState<'email' | 'phone'>(defaultLoginType);
   const [ userInfoOpen, setUserInfoOpen ] = useState(false)
 
   return (
@@ -56,11 +58,14 @@ export default function Register({
             gotoLogin={gotoLogin}
           />
         )}
-        <RegisterSwitchType
-          variant={variant}
-          loginType={loginType}
-          onChange={setLoginType}
-        />
+
+        {canSwitchLoginType && (
+          <RegisterSwitchType
+            variant={variant}
+            loginType={loginType}
+            onChange={setLoginType}
+          />
+        )}
       </div>
 
       <UploadUserInfoModal

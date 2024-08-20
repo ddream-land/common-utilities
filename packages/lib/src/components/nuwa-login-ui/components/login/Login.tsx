@@ -8,21 +8,23 @@ import LoginPhone from "./LoginPhone";
 import LoginSwitchType from "./LoginSwitchType";
 
 export default function Login({
-  loginModel,
+  defaultLoginType,
+  canSwitchLoginType,
   gotoRegister,
   gotoResetPassword,
   onLogin,
   isCloseable = true,
   onClose,
 }: {
-  loginModel: 'email' | 'phone'
+  defaultLoginType: 'email' | 'phone'
+  canSwitchLoginType?: boolean
   gotoRegister?: () => void
   gotoResetPassword?: () => void
   onLogin?: () => void
   isCloseable?: boolean
   onClose?: () => void
 }) {
-  const [ loginType, setLoginType ] = useState<'email' | 'phone'>(loginModel);
+  const [ loginType, setLoginType ] = useState<'email' | 'phone'>(defaultLoginType);
   const labels = useLabels();
 
   return (
@@ -66,7 +68,9 @@ export default function Login({
             </div>
           </div>
         </form>
-        <LoginSwitchType loginType={loginType} onChange={setLoginType} />
+        {canSwitchLoginType && (
+          <LoginSwitchType loginType={loginType} onChange={setLoginType} />
+        )}
       </div>
     </div>
   );

@@ -23,7 +23,8 @@ export type LoginModalProps = {
   inviter?: number | undefined
   isOpen?: boolean
   openPage?: 'login' | 'register' | 'resetPassword' | 'deleteUser'
-  loginModel?: 'phone' | 'email'
+  defaultLoginType?: 'phone' | 'email'
+  canSwitchLoginType?: boolean
   locale?: 'en' | 'zh-CN'
   isCloseable?: boolean
   onClose?: () => void
@@ -40,7 +41,8 @@ export function LoginModal({
   inviter,
   isOpen = false,
   openPage = 'login',
-  loginModel = 'phone',
+  defaultLoginType = 'email',
+  canSwitchLoginType = false,
   locale,
   isCloseable = true,
   onClose,
@@ -115,7 +117,8 @@ export function LoginModal({
                           <div className={`${routerHistory[routerHistory.length - 1] === 'login' ? 'block' : 'hidden'} w-full h-full`}>
                             <Login
                               onLogin={onLogin}
-                              loginModel={loginModel}
+                              defaultLoginType={defaultLoginType}
+                              canSwitchLoginType={canSwitchLoginType}
                               gotoRegister={() => {
                                 setRouterHistory([
                                   ...routerHistory,
@@ -137,7 +140,8 @@ export function LoginModal({
                           >
                             <Register
                               variant="register"
-                              loginModel={loginModel}
+                              defaultLoginType={defaultLoginType}
+                              canSwitchLoginType={canSwitchLoginType}
                               inviter={inviter}
                               gotoLogin={() => {
                                 if (routerHistory[routerHistory.length - 2] === 'login') {
@@ -168,7 +172,8 @@ export function LoginModal({
                           >
                             <Register
                               variant="resetPassword"
-                              loginModel={loginModel}
+                              defaultLoginType={defaultLoginType}
+                              canSwitchLoginType={canSwitchLoginType}
                               onDone={() => {
                                 if (onResetPassword) {
                                   onResetPassword()
@@ -197,7 +202,8 @@ export function LoginModal({
 
                             <Register
                               variant="deleteUser"
-                              loginModel={loginModel}
+                              defaultLoginType={defaultLoginType}
+                              canSwitchLoginType={canSwitchLoginType}
                               onDone={() => {
                                 if (onDeleteUser) {
                                   onDeleteUser()

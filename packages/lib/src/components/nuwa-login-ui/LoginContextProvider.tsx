@@ -46,7 +46,8 @@ function loginReducer(draft: LoginModalProps, action: any) {
       draft.isOpen = true;
       action.payload.inviter !== undefined && (draft.inviter = action.payload.inviter);
       action.payload.openPage !== undefined && (draft.openPage = action.payload.openPage);
-      action.payload.loginModel !== undefined && (draft.loginModel = action.payload.loginModel);
+      action.payload.defaultLoginType !== undefined && (draft.defaultLoginType = action.payload.defaultLoginType);
+      action.payload.canSwitchLoginType !== undefined && (draft.canSwitchLoginType = action.payload.canSwitchLoginType);
       action.payload.locale !== undefined && (draft.locale = action.payload.locale);
       action.payload.isCloseable !== undefined && (draft.isCloseable = action.payload.isCloseable);
       action.payload.onClose !== undefined && (draft.onClose = action.payload.onClose);
