@@ -165,16 +165,19 @@ export default function RegisterEmail({
             setEmail(e.target.value);
           }}
           endContent={
-            <Button
-              variant="solid"
-              className="text-white bg-transparent w-[100px]"
-              color="default"
-              isLoading={sendingCode}
-              isDisabled={count !== CountLimit}
-              onClick={sendCodeToMailHandler}
-            >
-              {(count !== CountLimit) ? `${count}s` : labelsUser.send}
-            </Button>
+            <div className="h-full w-[120px] flex flex-row justify-center items-center py-[1px]">
+              <Button
+                variant="solid"
+                className="text-white bg-transparent"
+                size="sm"
+                color="default"
+                isLoading={sendingCode}
+                isDisabled={count !== CountLimit}
+                onClick={sendCodeToMailHandler}
+              >
+                {(count !== CountLimit) ? `${count}s` : labelsUser.send}
+              </Button>
+            </div>
           }
         />
         <Input
