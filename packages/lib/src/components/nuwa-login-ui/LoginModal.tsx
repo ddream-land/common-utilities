@@ -14,15 +14,16 @@ import { MouseEvent, useEffect, useState } from 'react'
 import Register from './components/register/Register'
 import ResetPassword from './components/resetPassword/ResetPassword'
 import DeleteUser from './components/deleteUser/DeleteUser'
-import { ArrowLeftIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { LabelsContextProvider } from './context/LabelsContext'
-import { LocaleContext } from './context/LocaleContext'
-import { getI18n } from '../../utils/base.api'
+import { LocaleContextProvider } from './context/LocaleContext'
+import { LoginHeaderButtons } from './components/LoginHeaderButtons'
 
 
 export type LoginModalProps = {
+  inviter?: number | undefined
   isOpen?: boolean
   openPage?: 'login' | 'register' | 'resetPassword' | 'deleteUser'
+  loginModel?: 'phone' | 'email'
   locale?: 'en' | 'zh-CN'
   isCloseable?: boolean
   onClose?: () => void
@@ -36,8 +37,10 @@ export type LoginModalProps = {
 }
 
 export function LoginModal({
+  inviter,
   isOpen = false,
   openPage = 'login',
+  loginModel = 'phone',
   locale,
   isCloseable = true,
   onClose,
@@ -50,23 +53,28 @@ export function LoginModal({
   onMouseLeave,
 }: LoginModalProps) {
   const msgModal = useDisclosure({ isOpen: isOpen })
-  const [page, setPage] = useState(openPage)
-  const [isBack, setIsBack] = useState(false)
-  const defaultLocale = getI18n();
+  const [routerHistory, setRouterHistory] = useState<string[]>([openPage])
+  const defaultLocale = 'zh-CN'
+
+  const goBack = () => {
+    if (routerHistory.length > 0) {
+      setRouterHistory(routerHistory.slice(0, -1))
+    }
+  }
 
   useEffect(() => {
     if (isOpen) {
-      setPage(openPage)
+      setRouterHistory([openPage])
     }
   }, [isOpen])
 
   useEffect(() => {
-    setPage(openPage)
+    setRouterHistory([openPage])
   }, [openPage])
 
   return (
     <NextUIProvider>
-      <LocaleContext.Provider value={locale || defaultLocale}>
+      <LocaleContextProvider locale={locale || defaultLocale}>
         <LabelsContextProvider locale={locale || defaultLocale}>
           <AlterMessageContextProvider>
             <div className="dark">
@@ -96,58 +104,52 @@ export function LoginModal({
                   {(onClose) => (
                     <>
                       <ModalBody>
-                        <div className="bg-black w-[360px] h-[670px] px-6 py-10 rounded-3xl relative border-[#898989] border border-solid">
-                          {isBack && (
-                            <Button
-                              isIconOnly
-                              className={`absolute left-2 top-2`}
-                              size="md"
-                              variant="light"
-                              onPress={() => {
-                                setPage('login')
-                                setIsBack(false)
-                              }}
-                            >
-                              <ArrowLeftIcon className="h-6 w-6 text-white fill-white" />
-                            </Button>
-                          )}
+                        <div className="bg-[#191919] w-[360px] h-[640px] rounded-[48px] relative border-[#898989] border border-solid overflow-hidden">
+                          <LoginHeaderButtons
+                            canGoBack={routerHistory.length > 1}
+                            onGoBack={goBack}
+                            isCloseable={isCloseable}
+                            onClose={onClose}
+                          />
 
-                          {isCloseable && (
-                            <Button
-                              isIconOnly
-                              className="absolute right-2 top-2"
-                              size="md"
-                              variant="light"
-                              onPress={() => {
-                                onClose && onClose()
-                              }}
-                            >
-                              <XMarkIcon className="h-6 w-6 text-white fill-white" />
-                            </Button>
-                          )}
-
-                          <div className={`${page === 'login' ? 'block' : 'hidden'} w-full h-full`}>
+                          <div className={`${routerHistory[routerHistory.length - 1] === 'login' ? 'block' : 'hidden'} w-full h-full`}>
                             <Login
                               onLogin={onLogin}
+                              loginModel={loginModel}
                               gotoRegister={() => {
-                                setIsBack(true)
-                                setPage('register')
+                                setRouterHistory([
+                                  ...routerHistory,
+                                  'register'
+                                ])
                               }}
                               gotoResetPassword={() => {
-                                setIsBack(true)
-                                setPage('resetPassword')
+                                setRouterHistory([
+                                  ...routerHistory,
+                                  'resetPassword'
+                                ])
                               }}
+                              isCloseable={isCloseable}
+                              onClose={onClose}
                             />
                           </div>
                           <div
-                            className={`${page === 'register' ? 'block' : 'hidden'} w-full h-full`}
+                            className={`${routerHistory[routerHistory.length - 1] === 'register' ? 'block' : 'hidden'} w-full h-full`}
                           >
                             <Register
+                              variant="register"
+                              loginModel={loginModel}
+                              inviter={inviter}
                               gotoLogin={() => {
-                                setIsBack(false)
-                                setPage('login')
+                                if (routerHistory[routerHistory.length - 2] === 'login') {
+                                  goBack()
+                                } else {
+                                  setRouterHistory([
+                                    ...routerHistory,
+                                    'login'
+                                  ])
+                                }
                               }}
-                              onRegister={() => {
+                              onDone={() => {
                                 if (onRegister) {
                                   onRegister()
                                 } else {
@@ -155,37 +157,66 @@ export function LoginModal({
                                   onLogin && onLogin()
                                 }
                               }}
+                              isCloseable={isCloseable}
+                              onClose={onClose}
                             />
                           </div>
                           <div
                             className={`${
-                              page === 'resetPassword' ? 'block' : 'hidden'
+                              routerHistory[routerHistory.length - 1] === 'resetPassword' ? 'block' : 'hidden'
                             } w-full h-full`}
                           >
-                            <ResetPassword
+                            <Register
+                              variant="resetPassword"
+                              loginModel={loginModel}
+                              onDone={() => {
+                                if (onResetPassword) {
+                                  onResetPassword()
+                                } else {
+                                  setRouterHistory(['login'])
+                                }
+                              }}
+                              isCloseable={isCloseable}
+                              onClose={onClose}
+                            />
+                            {/* <ResetPassword
                               onResetPassword={() => {
                                 if (onResetPassword) {
                                   onResetPassword()
                                 } else {
-                                  setPage('login')
+                                  setRouterHistory(['login'])
                                 }
                               }}
-                            />
+                            /> */}
                           </div>
                           <div
                             className={`${
-                              page === 'deleteUser' ? 'block' : 'hidden'
+                              routerHistory[routerHistory.length - 1] === 'deleteUser' ? 'block' : 'hidden'
                             } w-full h-full`}
                           >
-                            <DeleteUser
+
+                            <Register
+                              variant="deleteUser"
+                              loginModel={loginModel}
+                              onDone={() => {
+                                if (onDeleteUser) {
+                                  onDeleteUser()
+                                } else {
+                                  setRouterHistory(['login'])
+                                }
+                              }}
+                              isCloseable={isCloseable}
+                              onClose={onClose}
+                            />
+                            {/* <DeleteUser
                               onDeleteUser={() => {
                                 if (onDeleteUser) {
                                   onDeleteUser()
                                 } else {
-                                  setPage('login')
+                                  setRouterHistory(['login'])
                                 }
                               }}
-                            />
+                            /> */}
                           </div>
                         </div>
                       </ModalBody>
@@ -196,7 +227,7 @@ export function LoginModal({
             </div>
           </AlterMessageContextProvider>
         </LabelsContextProvider>
-      </LocaleContext.Provider>
+      </LocaleContextProvider>
     </NextUIProvider>
   )
 }

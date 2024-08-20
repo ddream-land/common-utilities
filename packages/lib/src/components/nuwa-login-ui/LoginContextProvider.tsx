@@ -18,12 +18,14 @@ export function LoginContextProvider({ children }: {children: React.ReactNode}) 
   return (
     <LoginContext.Provider value={props}>
       <LoginDispatchContext.Provider value={dispatch}>
-        <LoginModal {...props} onClose={() => {
-          props.onClose?.();
-          dispatch({
-            type: "close"
-          })
-        }} />
+        {props.isOpen && (
+          <LoginModal {...props} onClose={() => {
+            props.onClose?.();
+            dispatch({
+              type: "close"
+            })
+          }} />
+        )}
         {children}
       </LoginDispatchContext.Provider>
     </LoginContext.Provider>
@@ -42,7 +44,9 @@ function loginReducer(draft: LoginModalProps, action: any) {
   switch (action.type) {
     case 'open': {
       draft.isOpen = true;
+      action.payload.inviter !== undefined && (draft.inviter = action.payload.inviter);
       action.payload.openPage !== undefined && (draft.openPage = action.payload.openPage);
+      action.payload.loginModel !== undefined && (draft.loginModel = action.payload.loginModel);
       action.payload.locale !== undefined && (draft.locale = action.payload.locale);
       action.payload.isCloseable !== undefined && (draft.isCloseable = action.payload.isCloseable);
       action.payload.onClose !== undefined && (draft.onClose = action.payload.onClose);

@@ -11,9 +11,9 @@ export default function LogoTitle({
 }: {
 }) {
   return (
-    <div className="w-full flex flex-row justify-center items-center gap-2">
-      <LogoIcon className="h-10" />
-      <Image disableSkeleton={true} radius="none" width={149} height={35} src={nuwaLogoBase64} alt="logo" />
+    <div className="w-full flex flex-row justify-center items-end gap-2">
+      <LogoIcon className="h-8" />
+      <Image disableSkeleton={true} radius="none" width={100} height={26} src={nuwaLogoBase64} alt="logo" />
     </div>
   );
 }

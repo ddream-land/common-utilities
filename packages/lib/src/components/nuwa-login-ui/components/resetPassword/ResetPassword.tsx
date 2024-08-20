@@ -55,7 +55,7 @@ export default function ResetPassword({
       <div className="w-full h-full flex flex-col justify-between">
         <form className="w-full flex flex-col gap-5">
           <LogoTitle />
-          <div className="w-full text-center text-white text-2xl font-bold mb-8 mt-5">{labels.User.resetpasswordtitle}</div>
+          <div className="w-full text-center text-white text-2xl font-bold mb-8 mt-5">{labels.UserResetPassword.title}</div>
           <Input
             autoComplete="off"
             color="default"
@@ -84,7 +84,7 @@ export default function ResetPassword({
                 }
               }}
             >
-              {(count !== CountLimit) ? `${count}s` : labels.User.resetpasswordsend}
+              {(count !== CountLimit) ? `${count}s` : labels.UserResetPassword.send}
             </Button>
             }
           />
@@ -150,7 +150,7 @@ export default function ResetPassword({
             }
           }}
         >
-          {labels.User.resetpasswordsubmit}
+          {labels.UserResetPassword.submit}
         </Button>
       </div>
       

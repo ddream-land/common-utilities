@@ -55,7 +55,7 @@ export default function DeleteUser({
       <div className="w-full h-full flex flex-col justify-between">
         <form className="w-full flex flex-col gap-5">
           <LogoTitle />
-          <div className="w-full text-center text-white text-2xl font-bold mb-8 mt-5">{labels.User.deleteusertitle}</div>
+          <div className="w-full text-center text-white text-2xl font-bold mb-8 mt-5">{labels.UserDeleteUser.title}</div>
           <Input
             autoComplete="off"
             color="default"
@@ -84,7 +84,7 @@ export default function DeleteUser({
                 }
               }}
             >
-              {(count !== CountLimit) ? `${count}s` : labels.User.deleteusersend}
+              {(count !== CountLimit) ? `${count}s` : labels.UserDeleteUser.send}
             </Button>
             }
           />
@@ -152,7 +152,7 @@ export default function DeleteUser({
             }
           }}
         >
-          {labels.User.deleteusersubmit}
+          {labels.UserDeleteUser.submit}
         </Button>
       </div>
     </div>

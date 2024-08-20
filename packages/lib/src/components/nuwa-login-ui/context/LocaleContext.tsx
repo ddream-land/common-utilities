@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from 'react';
 
-export const LocaleContext = createContext('en');
+export const LocaleContext = createContext('zh-CN');
 export function LocaleContextProvider({ locale, children }: {locale: string, children: React.ReactNode}) {
   return (
     <LocaleContext.Provider value={locale}>
