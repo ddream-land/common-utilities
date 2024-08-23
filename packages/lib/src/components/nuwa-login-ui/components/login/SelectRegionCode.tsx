@@ -10,70 +10,10 @@ export default function SelectRegionCode({
 }) {
 
   const regionCodeList = [{
-    label: 'z',
+    label: '',
     value: [{
       label: '中国大陆',
       value: '86'
-    }, {
-      label: '香港',
-      value: '852'
-    }, {
-      label: '澳门',
-      value: '853'
-    }, {
-      label: '台湾',
-      value: '886'
-    }]
-  }, {
-    label: 'A',
-    value: [{
-      label: '阿富汗',
-      value: '93'
-    }, {
-      label: '阿尔巴尼亚',
-      value: '355'
-    }, {
-      label: '阿尔及利亚',
-      value: '213'
-    }, {
-      label: '安道尔',
-      value: '376'
-    }, {
-      label: '安哥拉',
-      value: '244'
-    }, {
-      label: '安圭拉',
-      value: '1264'
-    }, {
-      label: '阿尔巴尼亚',
-      value: '355'
-    }, {
-      label: '阿尔及利亚',
-      value: '213'
-    }, {
-      label: '安道尔',
-      value: '376'
-    }, {
-      label: '安哥拉',
-      value: '244'
-    }, {
-      label: '安圭拉',
-      value: '1264'
-    }, {
-      label: '阿尔巴尼亚',
-      value: '355'
-    }, {
-      label: '阿尔及利亚',
-      value: '213'
-    }, {
-      label: '安道尔',
-      value: '376'
-    }, {
-      label: '安哥拉',
-      value: '244'
-    }, {
-      label: '安圭拉',
-      value: '1264'
     }]
   }]
   

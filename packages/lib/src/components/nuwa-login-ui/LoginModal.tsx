@@ -42,7 +42,7 @@ export function LoginModal({
   isOpen = false,
   openPage = 'login',
   defaultLoginType = 'email',
-  canSwitchLoginType = false,
+  canSwitchLoginType = true,
   locale,
   isCloseable = true,
   onClose,
