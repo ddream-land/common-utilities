@@ -145,6 +145,7 @@ export function LoginModal({
                               defaultLoginType={defaultLoginType}
                               canSwitchLoginType={canSwitchLoginType}
                               inviter={inviter}
+                              channel={channel}
                               gotoLogin={() => {
                                 if (routerHistory[routerHistory.length - 2] === 'login') {
                                   goBack()
