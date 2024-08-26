@@ -25,6 +25,7 @@ const CountLimit = 60;
 export default function RegisterPhone({
   variant,
   inviter,
+  channel,
   isCloseable = true,
   onClose,
   gotoLogin,
@@ -32,6 +33,7 @@ export default function RegisterPhone({
 }: {
   variant: RegisterVarinats
   inviter?:  number | undefined
+  channel?: string | undefined
   isCloseable?: boolean
   onClose?: () => void
   gotoLogin?: () => void
@@ -90,10 +92,15 @@ export default function RegisterPhone({
         passwd: md5(password),
         request_id: requestId,
         source: 1,
-        inviter: inviter
+        inviter: inviter,
+        channel: channel
       }
       if (!inviter || variant === "resetPassword" || variant === "deleteUser") {
         delete params.inviter
+      }
+
+      if (!channel || variant === "resetPassword" || variant === "deleteUser") {
+        delete params.channel
       }
 
       let res;

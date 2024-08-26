@@ -13,6 +13,7 @@ export default function Register({
   defaultLoginType,
   canSwitchLoginType,
   inviter,
+  channel,
   gotoLogin,
   onDone,
   isCloseable = true,
@@ -22,6 +23,7 @@ export default function Register({
   defaultLoginType: 'email' | 'phone'
   canSwitchLoginType?: boolean
   inviter?: number | undefined
+  channel?: string | undefined
   gotoLogin?: () => void
   onDone?: () => void
   isCloseable?: boolean
@@ -37,6 +39,7 @@ export default function Register({
           <RegisterEmail
             variant={variant}
             inviter={inviter}
+            channel={channel}
             onDone={() => {
               if (variant === 'register') {
                 setUserInfoOpen(true);    
@@ -48,6 +51,7 @@ export default function Register({
           <RegisterPhone
             variant={variant}
             inviter={inviter}
+            channel={channel}
             isCloseable={isCloseable}
             onClose={onClose}
             onDone={() => {

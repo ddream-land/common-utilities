@@ -36,18 +36,22 @@ export default function RegisterPhoneVerifyCode({
   const phoneCodeVerifyApi = phoneCodeVerify();
   const amDispatch = useAmDispatch();
   const [ verifing, setVerifing ] = useState(false);
+  let codeType;
 
 
   let labelsUser;
   switch(variant) {
     case "register":
       labelsUser = useLabels().UserRegister
+      codeType = 1
       break;
     case "resetPassword":
       labelsUser = useLabels().UserResetPassword
+      codeType = 2
       break;
     case "deleteUser":
       labelsUser = useLabels().UserDeleteUser
+      codeType = 3
       break;
   }
 
@@ -68,7 +72,8 @@ export default function RegisterPhoneVerifyCode({
         phone: phone,
         region_code: regionCode,
         code: code,
-        request_id: requestId
+        request_id: requestId,
+        type: codeType
       });
       if (res && res.code === 0) {
         verifySuccess();

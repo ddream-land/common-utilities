@@ -20,11 +20,13 @@ const CountLimit = 60;
 export default function RegisterEmail({
   variant,
   inviter,
+  channel,
   gotoLogin,
   onDone,
 }: {
   variant: RegisterVarinats
   inviter?:  number | undefined
+  channel?: string | undefined
   gotoLogin?: () => void;
   onDone?: () => void
 }) {
@@ -76,10 +78,14 @@ export default function RegisterEmail({
         passwd: md5(password),
         request_id: requestId,
         source: 2,
-        inviter: inviter
+        inviter: inviter,
+        channel: channel
       }
       if (!inviter || variant === "resetPassword" || variant === "deleteUser") {
         delete params.inviter
+      }
+      if (!channel || variant === "resetPassword" || variant === "deleteUser") {
+        delete params.channel
       }
       let res;
       switch(variant) {

@@ -16,7 +16,7 @@ const zhCNLabels = {
     "loginsubmitbtn": "验证并登录",
     "loginphonebtn": "手机号登录",
     "loginemailbtn": "邮箱登录",
-    "loginothermethods": "其他方式注册",
+    "loginothermethods": "其他方式登录",
     "loginforgotpassword": "忘记密码?",
     "loginsignuptitle": "新的 DDream.LAND? ",
     "loginsignuplink": "注册",

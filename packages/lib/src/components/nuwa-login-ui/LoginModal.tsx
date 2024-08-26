@@ -21,6 +21,7 @@ import { LoginHeaderButtons } from './components/LoginHeaderButtons'
 
 export type LoginModalProps = {
   inviter?: number | undefined
+  channel?: string | undefined
   isOpen?: boolean
   openPage?: 'login' | 'register' | 'resetPassword' | 'deleteUser'
   defaultLoginType?: 'phone' | 'email'
@@ -39,6 +40,7 @@ export type LoginModalProps = {
 
 export function LoginModal({
   inviter,
+  channel,
   isOpen = false,
   openPage = 'login',
   defaultLoginType = 'email',

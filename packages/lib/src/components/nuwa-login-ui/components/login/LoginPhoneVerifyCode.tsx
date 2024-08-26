@@ -4,7 +4,7 @@ import { Button, Input } from "@nextui-org/react";
 import { InputClassNames } from "../InputStyle";
 import { useLabels } from "../../context/LabelsContext";
 import { z } from "zod";
-import { codeLogin, mailCode, phoneCodeVerify } from "../../utils/login.api";
+import { codeLogin, mailCode } from "../../utils/login.api";
 import { useAmDispatch } from "../../../../components/alter-message/AlterMessageContextProvider";
 import { useEffect, useRef, useState } from "react";
 import { setCookie } from 'typescript-cookie'
