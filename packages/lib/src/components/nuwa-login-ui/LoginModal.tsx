@@ -83,6 +83,7 @@ export function LoginModal({
           <AlterMessageContextProvider>
             <div className="dark">
               <Modal
+                placement="center"
                 isDismissable={isCloseable}
                 isOpen={msgModal.isOpen}
                 onClose={() => {

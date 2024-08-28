@@ -30,7 +30,7 @@ function Page() {
     <LoginContextProvider>
       <div className="w-full h-full flex flex-col gap-10 bg-white">
         <LoginPage />
-        <div className="p-10 flex flex-row gap-2 justify-start items-center">
+        <div className="p-10 flex flex-row gap-2 justify-start items-center w-full flex-wrap">
           <Button color="primary" size="lg" onPress={() => setOcQuickCreateOpen(true)}>
             oc quick create
           </Button>

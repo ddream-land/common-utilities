@@ -8,7 +8,7 @@ function LoginPage() {
   
 
   return (
-    <div className='flex flex-row gap-4'>
+    <div className='w-full flex-wrap flex flex-row gap-4'>
       <Button color="primary" size="lg" onClick={() => {
         loginDispatch({
           type: "open",
