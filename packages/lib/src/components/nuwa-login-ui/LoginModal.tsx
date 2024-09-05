@@ -83,8 +83,9 @@ export function LoginModal({
           <AlterMessageContextProvider>
             <div className="dark">
               <Modal
-                placement="center"
+                placement="top-center"
                 isDismissable={isCloseable}
+                scrollBehavior='outside'
                 isOpen={msgModal.isOpen}
                 onClose={() => {
                   onClose && onClose()
@@ -92,7 +93,7 @@ export function LoginModal({
                 hideCloseButton={true}
                 classNames={{
                   wrapper: '',
-                  base: 'bg-transparent shadow-none w-[360px]',
+                  base: 'bg-transparent shadow-none w-[22.5rem] my-4',
                   body: 'p-0 m-0',
                 }}
                 onMouseEnter={(e) => {
@@ -109,7 +110,7 @@ export function LoginModal({
                   {(onClose) => (
                     <>
                       <ModalBody>
-                        <div className="bg-[#191919] w-[360px] h-[640px] rounded-[48px] relative border-[#898989] border border-solid overflow-hidden">
+                        <div className="bg-[#191919] w-[22.5rem] max-h-[40rem] rounded-[3rem] relative border-[#898989] border border-solid overflow-hidden">
                           <LoginHeaderButtons
                             canGoBack={routerHistory.length > 1}
                             onGoBack={goBack}

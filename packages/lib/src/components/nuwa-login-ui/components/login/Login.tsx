@@ -35,9 +35,17 @@ export default function Login({
           <div className="w-full text-center text-white text-lg font-bold font-['Roboto'] leading-normal mb-3 mt-5">{labels.User.logintitle}</div>
           <div className="w-full text-center text-white text-[9px] font-normal font-['Inter'] leading-normal mb-9">
             <span>{labels.User.logintitletip1}</span>
-            <span className="text-blue-400 cursor-pointer">{labels.User.logintitletip2}</span>
+            <a
+              href="https://o7rqgjfmuv.feishu.cn/wiki/J1HOwixseiEZ1rk15MIcwdo0nNf?renamingWikiNode=false"
+              target="_blank"
+              className="text-blue-400 cursor-pointer inline-block"
+            >{labels.User.logintitletip2}</a>
             <span>{labels.User.logintitletip3}</span>
-            <span className="text-blue-400 cursor-pointer">{labels.User.logintitletip4}</span>
+            <a
+              href="https://o7rqgjfmuv.feishu.cn/wiki/I0kuwk8FpiasIOkHC4gc2TEhntb?renamingWikiNode=false"
+              target="_blank"
+              className="text-blue-400 cursor-pointer inline-block"
+            >{labels.User.logintitletip4}</a>
             <span>{labels.User.logintitletip5}</span>
           </div>
 
