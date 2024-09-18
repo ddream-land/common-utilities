@@ -41,7 +41,7 @@ function AlterMessages({
       onClose={onClose}
       hideCloseButton={true}
       classNames={{
-        wrapper: "my-20",
+        wrapper: "my-20 z-[9999999]",
         body: "",
         base: "bg-transparent shadow-none",
       }}

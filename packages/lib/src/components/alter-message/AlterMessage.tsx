@@ -22,6 +22,7 @@ function AlterMessage({message, isOpen = false, onClose}: {message: string, isOp
       onClose={onClose}
       hideCloseButton={true}
       classNames={{
+        wrapper: "z-[9999999]",
         body: "bg-transparent",
         base: "bg-transparent",
       }}

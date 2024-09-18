@@ -92,7 +92,7 @@ export function LoginModal({
                 }}
                 hideCloseButton={true}
                 classNames={{
-                  wrapper: '',
+                  wrapper: 'z-[1100000]',
                   base: 'bg-transparent shadow-none w-[22.5rem] my-4',
                   body: 'p-0 m-0',
                 }}
