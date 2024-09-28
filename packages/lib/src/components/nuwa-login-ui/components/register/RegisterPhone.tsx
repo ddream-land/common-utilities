@@ -181,7 +181,7 @@ export default function RegisterPhone({
         <div className="flex flex-col gap-3">
           <div className="flex flex-row gap-2 justify-center items-center">
             <div
-              className=" cursor-pointer shrink-0 w-[80px] h-[50px] bg-[#323239] rounded-xl flex flex-row gap-2 justify-center items-center"
+              className=" cursor-pointer shrink-0 w-[80px] h-[36px] bg-[#323239] rounded-xl flex flex-row gap-2 justify-center items-center"
               onClick={() => {
                 setSelectRegionCodeShow(true);
               }}

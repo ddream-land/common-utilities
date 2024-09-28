@@ -30,7 +30,6 @@ export default function Register({
   onClose?: () => void
 }) {
   const [ loginType, setLoginType ] = useState<'email' | 'phone'>(defaultLoginType);
-  const [ userInfoOpen, setUserInfoOpen ] = useState(false)
 
   return (
     <div className="h-full w-full relative">
@@ -41,9 +40,12 @@ export default function Register({
             inviter={inviter}
             channel={channel}
             onDone={() => {
-              if (variant === 'register') {
-                setUserInfoOpen(true);    
-              }
+              // if (variant === 'register') {
+              //   setUserInfoOpen && setUserInfoOpen(true);    
+              // } else {
+              //   onDone && onDone()
+              // }
+              onDone && onDone()
             }}
             gotoLogin={gotoLogin}
           />
@@ -55,9 +57,12 @@ export default function Register({
             isCloseable={isCloseable}
             onClose={onClose}
             onDone={() => {
-              if (variant === 'register') {
-                setUserInfoOpen(true);    
-              }
+              // if (variant === 'register') {
+              //   setUserInfoOpen && setUserInfoOpen(true);    
+              // } else {
+              //   onDone && onDone()
+              // }
+              onDone && onDone()
             }}
             gotoLogin={gotoLogin}
           />
@@ -71,17 +76,6 @@ export default function Register({
           />
         )}
       </div>
-
-      <UploadUserInfoModal
-        isOpen={userInfoOpen}
-        onClose={() => {
-          setUserInfoOpen(false)
-        }}
-        onSuccess={() => {
-          onDone && onDone();
-        }}
-        locale='en'
-      />
     </div>
   );
 }

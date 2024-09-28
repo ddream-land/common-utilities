@@ -17,6 +17,7 @@ import DeleteUser from './components/deleteUser/DeleteUser'
 import { LabelsContextProvider } from './context/LabelsContext'
 import { LocaleContextProvider } from './context/LocaleContext'
 import { LoginHeaderButtons } from './components/LoginHeaderButtons'
+import { UploadUserInfoModal } from '../user-info/UploadUserInfoModal'
 
 
 export type LoginModalProps = {
@@ -65,6 +66,7 @@ export function LoginModal({
       setRouterHistory(routerHistory.slice(0, -1))
     }
   }
+  const [ userInfoOpen, setUserInfoOpen ] = useState(false)
 
   useEffect(() => {
     if (isOpen) {
@@ -86,7 +88,7 @@ export function LoginModal({
                 placement="top-center"
                 isDismissable={isCloseable}
                 scrollBehavior='outside'
-                isOpen={msgModal.isOpen}
+                isOpen={msgModal.isOpen && !userInfoOpen}
                 onClose={() => {
                   onClose && onClose()
                 }}
@@ -159,12 +161,9 @@ export function LoginModal({
                                 }
                               }}
                               onDone={() => {
-                                if (onRegister) {
-                                  onRegister()
-                                } else {
-                                  // setPage('login')
-                                  onLogin && onLogin()
-                                }
+                                setUserInfoOpen(true);
+                                msgModal.onClose()
+                                // onClose();
                               }}
                               isCloseable={isCloseable}
                               onClose={onClose}
@@ -235,6 +234,23 @@ export function LoginModal({
                   )}
                 </ModalContent>
               </Modal>
+
+
+              <UploadUserInfoModal
+                isOpen={userInfoOpen}
+                onClose={() => {
+                  setUserInfoOpen(false)
+                }}
+                onSuccess={() => {
+                  if (onRegister) {
+                    onRegister()
+                  } else {
+                    // setPage('login')
+                    onLogin && onLogin()
+                  }
+                }}
+                locale='en'
+              />
             </div>
           </AlterMessageContextProvider>
         </LabelsContextProvider>
